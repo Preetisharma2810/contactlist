@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>
+        <%= locals.title %>
+    </title>
+    <link rel="stylesheet" href="/list.css">
+</head>
+<body>
+    <h1 id="page-heading">contact list</h1>
+    <div id="contact-list-container">
+        <% for( let i of Contact_List) { %>
+            <div class="contact" style="border: 3px solid black;">
+                <p>
+                    <%= i.name %>
+                    <%= i.phone %>
+                    <a href="/delete-contact/?id=<%=i._id%>">
+                        <button class="delete-button ">delete</button>
+                    </a>
+                </p>
+            </div>
+            <% } %>
+        </div>
+        <form action="/create-contact" method="post">
+            <input type="text" name="name" placeholder="enter name" required>
+            <input type="number" name="phone" placeholder="enter phone" required>
+            <button type="submitt">add</button>
+        </form>
+    </body>
+    <script type="text/javascript" src="/js/index.js"></script>
+    </html>
