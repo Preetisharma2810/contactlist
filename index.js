@@ -30,14 +30,14 @@ app.get('/delete-contact',function(req , res){
         return res.redirect('/list'); 
     }).catch((error) => {
         console.log(error);
+        return res.redirect('/list');
     }); 
 });
-
 app.post('/create-contact',function(req , res){
-    Contact.create({
-        name : req.body.name,
-        phone : req.body.phone
-    }).then((document) => {
+    let createObject = { name : req.body.name,
+    phone : req.body.phone}
+    Contact.create(createObject)
+    .then((document) => {
         // Handle successful document creation
         console.log('Document created:', document);
         return res.redirect('/list');
